@@ -7,6 +7,5 @@ const port = process.env.PORT
 
 app.use(express.json())
 app.use('/api', getRouter())
-// app.use(tasksRouter)
 
 export { app, port }
