@@ -9,6 +9,7 @@
     "clean": "rimraf build",
     "dev": "NODE_ENV=development env-cmd -f ./config/dev.env npm-run-all clean build server",
     "dev:watch": "nodemon",
+    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\"",
     "pro": "NODE_ENV=production env-cmd -f ./config/pro.env npm-run-all clean build server",
     "server": "node ./build/src/index.js",
     "start": "npm run pro",

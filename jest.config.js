@@ -5,14 +5,10 @@ module.exports = {
   rootDir: path.join(__dirname),
   testEnvironment: 'node',
   testMatch: [
-    "**/__tests__/**/*.+(ts|tsx|js)",
-    "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    '**/__tests__/**/*.+(ts|tsx|js)',
+    '**/?(*.)+(spec|test).+(ts|tsx|js)',
   ],
-  moduleDirectories: [
-    'node_modules',
-    __dirname,
-    path.join(__dirname, '/src'),
-  ],
+  moduleDirectories: ['node_modules', __dirname, path.join(__dirname, '/src')],
   coverageDirectory: path.join(__dirname, '/coverage/collective'),
   collectCoverageFrom: ['**/src/**/*.js'],
   coveragePathIgnorePatterns: ['.*/__tests__/.*'],
@@ -23,6 +19,6 @@ module.exports = {
     require.resolve('jest-watch-typeahead/testname'),
   ],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
-  }
+    '^.+\\.(ts|tsx)$': 'ts-jest',
+  },
 }
