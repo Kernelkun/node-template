@@ -1,20 +1,31 @@
-// import axios from 'axios'
-import { startServer } from '../../start'
-import {Server} from "http";
+import axios, { AxiosInstance } from "axios";
+import { startServer } from "../../start";
+import { Server } from "http";
+import { AddressInfo } from "net";
+import { getData, handleRequestFailure } from "../../utils/async";
 
-let server: Server
+let server: Server;
+let api: AxiosInstance;
 
 beforeAll(async () => {
-  server = await startServer()
-//   const baseUrl = `http://localhost:${server.address().port}/api`
-})
+  server = await startServer();
+  const { port } = server.address() as AddressInfo;
+  const baseURL = `http://localhost:${port}/api/auth`;
+  api = axios.create({ baseURL });
+  api.interceptors.response.use(getData, handleRequestFailure);
+});
 
 afterAll(async () => {
-  await server.close()
-})
+  await server.close();
+});
 
-describe('/me', () => {
-  test('Should return user info', () =>{
-    expect(1).toBe(1)
-  })
-})
+// beforeEach(async () => {
+//   await resetDb()
+// })
+
+describe("Auth Flow", () => {
+  test("/me should return user info", async () => {
+    const result = await api.get("/me");
+    expect(result).toMatchInlineSnapshot(`"Works"`);
+  });
+});

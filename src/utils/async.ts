@@ -1,4 +1,5 @@
-const getData = (res) => res.data
+const getData = (res: { data: any }) => res.data
+
 const handleRequestFailure = ({response: {status, data}}) => {
   const error = new Error(`${status}: ${JSON.stringify(data)}`)
   // remove parts of the stack trace so the error message (codeframe) shows up
@@ -16,6 +17,6 @@ const handleRequestFailure = ({response: {status, data}}) => {
   return Promise.reject(error)
 }
 
-const resolve = (e) => e
+const resolve = (e: Error) => e
 
 export {getData, handleRequestFailure, resolve}
