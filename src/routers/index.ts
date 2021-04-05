@@ -1,7 +1,7 @@
-import express from 'express'
+import express, {Router} from 'express'
 import getAuthRoutes from './auth'
 
-function getRouter() {
+function getRouter(): Router {
     const router = express.Router()
     router.use('/auth', getAuthRoutes())
     return router
