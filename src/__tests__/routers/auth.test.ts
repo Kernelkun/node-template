@@ -24,8 +24,10 @@ afterAll(async () => {
 // })
 
 describe('Auth Flow', () => {
-  test('/me should return user info', async () => {
-    const result = await api.get('/me')
-    expect(result).toMatchInlineSnapshot(`"Works"`)
+  describe('/me', () => {
+    test('Should return user info', async () => {
+      const result = await api.get('/me')
+      expect(result).toMatchInlineSnapshot(`"Works"`)
+    })
   })
 })
