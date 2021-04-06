@@ -25,7 +25,7 @@ afterAll(async () => {
 
 describe('Auth Flow', () => {
   describe('/me', () => {
-    test('Should return user info', async () => {
+    test('Should return "Works"', async () => {
       const result = await api.get('/me')
       expect(result).toMatchInlineSnapshot(`"Works"`)
     })
